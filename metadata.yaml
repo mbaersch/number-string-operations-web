@@ -2,5 +2,5 @@ homepage: "https://www.markus-baersch.de"
 documentation: "https://github.com/mbaersch/number-string-operations-web#readme"
 versions:
   # Latest version
-  - sha: xxxxx
+  - sha: fe2debc4053064f38d9a8e9ad657b44670902761
     changeNotes: Initial release.
