@@ -5,12 +5,9 @@ Set of Math and string manipulation operations
 
 **NOTE**: This is the client-side version of [this](https://github.com/mbaersch/number-string-operations) server-side variable template  
 
-![Template Status](https://img.shields.io/badge/Community%20Template%20Gallery%20Status-submitted-orange) ![Repo Size](https://img.shields.io/github/repo-size/mbaersch/number-string-operations-web) ![License](https://img.shields.io/github/license/mbaersch/number-string-operations-web)
-
+[![Template Status](https://img.shields.io/badge/Community%20Template%20Gallery%20Status-published-green)](https://tagmanager.google.com/gallery/#/owners/mbaersch/templates/number-string-operations-web) ![Repo Size](https://img.shields.io/github/repo-size/mbaersch/number-string-operations-web) ![License](https://img.shields.io/github/license/mbaersch/number-string-operations-web)
 
 ---
-
-## Change Notes
 
 ## What it does
 Create a new variable using this template to...
