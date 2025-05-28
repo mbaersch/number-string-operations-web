@@ -2,7 +2,7 @@ homepage: "https://www.markus-baersch.de"
 documentation: "https://github.com/mbaersch/number-string-operations-web#readme"
 versions:
   # Latest version
-  - sha: 60bd68f6f898907d8d491a0980978a8c966edcea
+  - sha: 9d6fcc5ded14c8e78c35fd0d19f0f6d816bf9379
     changeNotes: added basic boolean operations.
   # older versions
   - sha: fe2debc4053064f38d9a8e9ad657b44670902761
