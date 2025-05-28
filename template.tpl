@@ -74,6 +74,18 @@ ___TEMPLATE_PARAMETERS___
       {
         "value": "divide",
         "displayValue": "divide (/)"
+      },
+      {
+        "value": "b_and",
+        "displayValue": "AND (boolean)"
+      },
+      {
+        "value": "b_or",
+        "displayValue": "OR (boolean)"
+      },
+      {
+        "value": "b_not",
+        "displayValue": "NOT (boolean)"
       }
     ],
     "simpleValueType": true,
@@ -333,6 +345,16 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "stringMethodName",
         "paramValue": "splitSpecial",
         "type": "EQUALS"
+      },
+      {
+        "paramName": "stringMethodName",
+        "paramValue": "b_and",
+        "type": "EQUALS"
+      },
+      {
+        "paramName": "stringMethodName",
+        "paramValue": "b_or",
+        "type": "EQUALS"
       }
     ]
   },
@@ -409,18 +431,7 @@ ___TEMPLATE_PARAMETERS___
     ],
     "defaultValue": "none",
     "help": "Choose a transformation method to ensure desired output format",
-    "enablingConditions": [
-      {
-        "paramName": "functionType",
-        "paramValue": "calc",
-        "type": "EQUALS"
-      },
-      {
-        "paramName": "functionType",
-        "paramValue": "math",
-        "type": "EQUALS"
-      }
-    ]
+    "enablingConditions": []
   }
 ]
 
@@ -451,11 +462,22 @@ const replaceAll = function(str, oldstr, newstr) {
 switch(tp) {
   case "calc": 
     const fn = data.calcFunctionName;
+    
+    if (fn.indexOf("b_") >= 0) {
+      var op1_bool = makeString(data.op1).toLowerCase();
+      op1_bool = op1_bool === "true" || op1_bool === "1";
+      var op2_bool = makeString(data.op2).toLowerCase();
+      op2_bool = op2_bool === "true" || op2_bool === "1";
+    }
+    
     switch(fn) {
       case "add": rs = op1 + op2; break;
       case "subtract": rs = op1 - op2; break;
       case "multiply": rs = op1 * op2; break;
       case "divide": rs = op1 / op2; break;
+      case "b_and": rs = op1_bool && op2_bool; break;
+      case "b_or": rs = op1_bool || op2_bool; break;
+      case "b_not": rs = !op1_bool; break;
     }    
     break;
   case "math": 
@@ -516,10 +538,15 @@ switch(tp) {
 }
       
 const rt = data.resultTransformation;
-if (rt == 'round') return Math.round(rs); else
-if (rt == 'string') return makeString(rs); else
-if (rt == 'floor') return Math.floor(rs); else
-if (rt == 'fixed') return makeNumber(Math.round(rs*100) / 100); else
+if (tp==="calc" && data.calcFunctionName.indexOf("b_") >= 0) {
+  if (rt == 'string') return makeString(rs);
+  if (rt == 'round') return (rs === true) ? 1 : 0;
+  return rs;
+}
+if (rt == 'round') return Math.round(makeNumber(rs)); else
+if (rt == 'string') return makeString(makeNumber(rs)); else
+if (rt == 'floor') return Math.floor(makeNumber(rs)); else
+if (rt == 'fixed') return makeNumber(Math.round(makeNumber(rs)*100) / 100); else
 return rs;
 
 
@@ -626,8 +653,11 @@ return rs;
 ___TESTS___
 
 scenarios: []
+setup: ''
 
 
 ___NOTES___
 
 Created on 17.10.2024, 03:22:00
+
+

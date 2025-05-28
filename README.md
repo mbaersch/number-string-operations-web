@@ -9,6 +9,32 @@ Set of Math and string manipulation operations
 
 ---
 
+## Change Notes
+
+### 2025/05/28
+New boolean operations (placed in the *"calc"* section): AND, OR, NOT
+Results of *"string"* operations can be parsed to integer or fixed 
+Results of the new boolean operations can be parsed (converted) to an integer "0" or "1"
+
+### 2024/05/25
+New string methods "JSON.parse" & "JSON.stringify" for converting from / to objects
+
+### 2022/06/23
+New string method "split+extract": splits string at first parameter by second parameter delimiter and gets array item from split result by third parameter index
+
+New result conversion type "Convert To String" 
+
+### 2021/12/30
+New methods in "Math":
+- pow
+- sqrt
+
+New methods for strings:
+- toFixed (variable decimals)
+- toNumber (removes thousand separators and converts values with comma as decimal separators)
+- replaceAll
+- allows empty values as parameter 3 for replace / replaceAll
+
 ## What it does
 Create a new variable using this template to...
 
